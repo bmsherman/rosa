@@ -8,7 +8,7 @@ The Real compiler
 Rosa let's you write your code in `Real`s like this (note the specification!):
 
     def rigidBodyControl1(x1: Real, x2: Real, x3: Real): Real = {
-      require (-15 <= x1 && x1 <= 15 && -15 <= x2 && x2 <= 15 && -15 <= x3 && x3 <= 15) 
+      require (-15 <= x1 && x1 <= 15 && -15 <= x2 && x2 <= 15 && -15 <= x3 && x3 <= 15)
       -x1*x2 - 2*x2*x3 - x1 - x3
     } ensuring (res => res <= 705.0 && res +/- 6e-13)
 
@@ -16,10 +16,10 @@ and compiles this into:
 
     def rigidBodyControl1(x1: Double, x2: Double, x3: Double): Double = {
       -x1*x2 - 2*x2*x3 - x1 - x3
-    }  
+    }
 
-or 
-    
+or
+
     def rigidBodyControl1FixedPoint(x1: Int, x2: Int, x3: Int): Int = {
       val tmp0 = -(x1)
       val tmp1 = ((tmp0 * x2) >> 15)
@@ -40,7 +40,8 @@ Instructions for Linux and Mac OSX
 
 ### How to build ###
 
-Rosa is set up to work with sbt (simple-build-tool).
+Rosa is set up to work with sbt (simple-build-tool). It needs a pretty old version,
+but it works with version sbt-0.13.7, which is included in this repository.
 Once you have sbt installed on your machine, type the following in your favourite terminal
 in Rosa's home directory:
 $ sbt
@@ -84,7 +85,7 @@ If you get an error saying that libscalaz3 or libz3 are not found,
 first try to extract these libraries from the .jar file and move them for instance
 to Rosa's home directory or whenever you think the JVM searches.
 
-- Libraries for OSX are included lib/. If you get an error saying that libscalaz3 
+- Libraries for OSX are included lib/. If you get an error saying that libscalaz3
 or libz3 are not found, try to move them to whatever folder you think the JVM searches.
 
 - If Rosa should crash on one of the existing examples in testcases/reals,
